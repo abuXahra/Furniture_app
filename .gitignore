@@ -35,4 +35,6 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-constant/api.js
+
+#configuration folder and file
+config/
