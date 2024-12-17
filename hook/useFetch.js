@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { apiUrl } from "../constant/api";
 
 const useFetch = () => {
   const [data, setData] = useState([]);
@@ -10,8 +11,10 @@ const useFetch = () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        "http://192.168.14.83:5000/api/products/"
+        `https://furniture-api-id5q.onrender.com/api/products`
       );
+      console.log(response.data);
+      console.log("API_BASE_URL:", apiUrl);
       setData(response.data);
       setIsLoading(false);
     } catch (error) {

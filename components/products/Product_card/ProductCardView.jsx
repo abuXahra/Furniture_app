@@ -13,7 +13,7 @@ const ProductCardView = ({item}) => {
 
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={()=>navigation.navigate('ProductDetails')}>
+    <TouchableOpacity onPress={()=>navigation.navigate('ProductDetails', {item})}>
        <View style={styles.container}>
             
             <View style={styles.imageContainer}>

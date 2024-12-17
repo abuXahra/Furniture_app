@@ -40,6 +40,7 @@ const BottomNavigation = () => {
             }}  
           />
 
+          
           <Tab.Screen 
             name='Search' 
             component={Search}

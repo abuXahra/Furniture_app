@@ -1,11 +1,16 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import styles from './productDetails.style';
 import { Fontisto, Ionicons, MaterialCommunityIcons, MaterialIcons, SimpleLineIcons } from '@expo/vector-icons';
 import { COLORS, SIZES } from '../../constant';
+import { useRoute } from '@react-navigation/native';
 
 
 const ProductDetails = ({navigation}) => {
+
+  const route = useRoute();
+  const {item} = route.params;
+
 
   // const navigation = useNavigation();
   const [counter, setCounter] = useState(1);
@@ -19,6 +24,7 @@ const ProductDetails = ({navigation}) => {
         }
       }
   }
+
 
   return (
     <View style={styles.container}>
@@ -34,16 +40,18 @@ const ProductDetails = ({navigation}) => {
 
       {/* product Image */}
       <Image
-        source={{uri: 'https://img.kwcdn.com/product/open/2024-10-11/1728621589031-8ef8b6a3a74b4803ab1a4be04bf0018d-goods.jpeg?imageView2/2/w/800/q/70/format/webp'}}
+        source={{
+          uri: item.imgUrl,
+        }}
         style={styles.image}
       />
 
       {/* detail */}
       <View style={styles.details}>
         <View style={styles.titleRow}>
-            <Text style={styles.title}>Product</Text>
+            <Text style={styles.title}>{item.title}</Text>
             <View style={styles.priceWrapper}>
-              <Text style={styles.price}>N78.89</Text> 
+              <Text style={styles.price}>N{item.price}</Text> 
             </View>
         </View>
       </View>
@@ -82,7 +90,11 @@ const ProductDetails = ({navigation}) => {
       {/* Description */}
       <View style={styles.descriptionWrapper}>
             <Text style={styles.description}>Description</Text>
-            <Text style={styles.descText}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi quae consectetur ea eos culpa praesentium quaerat ipsam nemo. Cupiditate nam molestiae reprehenderit laborum vitae atque sed aliquid accusamus necessitatibus totam neque provident, aliquam sapiente eligendi fugit tenetur! Excepturi cumque debitis dignissimos nemo ipsam, totam itaque dolores, quas velit doloremque officia.</Text>
+            <ScrollView>
+              <Text style={styles.descText}>
+                {item.description}
+               </Text>
+            </ScrollView>
       </View>
 
 
@@ -91,7 +103,7 @@ const ProductDetails = ({navigation}) => {
         <View style={styles.location}>
             <View style={styles.locationInner}>
               <Ionicons name='location-outline' size={20}/>
-              <Text>Mabushi, Abuja</Text>
+              <Text>{item.location}</Text>
             </View>
 
             <View style={styles.locationInner}>
