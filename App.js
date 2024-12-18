@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomNavigation from "./navigation/BottomNavigation";
 import { Cart, ProductDetails, NewRivals } from "./screens";
+import Toast from "react-native-toast-message";
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +56,9 @@ export default function App() {
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
+
+      {/* Add Toast to your app */}
+      <Toast />
     </NavigationContainer>
   );
 }

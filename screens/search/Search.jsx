@@ -1,13 +1,30 @@
-import { View, Text, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, FlatList, Image } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather, Ionicons } from '@expo/vector-icons'
 import { COLORS, SIZES } from '../../constant'
 import styles from './search.style';
+import axios from 'axios'
+import { apiUrl } from '../../config/api'
 
 const Search = () => {
 
-  const [searchText, setSearchText] = useState('');
+  const [searchKey, setSearchKey] = useState('');
+  
+  const [searchResult, setSearchResult] = useState([]);
+  console.log(searchKey)
+  console.log(searchResult[0])
+
+  const handleSearch = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/products/search/${searchKey}`)
+      setSearchResult(res.data)
+      setSearchKey("")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <SafeAreaView>
       
@@ -22,9 +39,8 @@ const Search = () => {
           {/* search input wrapper*/}
           <View style={styles.searchWrapper}>
               <TextInput
-                value={searchText}
-                onChangeText={(text)=>setSearchText(text)}
-                onPressIn={()=>{}}
+                value={searchKey}
+                onChangeText={setSearchKey}
                 placeholder='what are you looking for'
                 style={styles.searchInput}
               />
@@ -32,11 +48,32 @@ const Search = () => {
           
           {/*search button  */}
           <View>
-            <TouchableOpacity onPress={()=>setSearchText('')} style={styles.searchBtn}>
+            <TouchableOpacity onPress={handleSearch} style={styles.searchBtn}>
                 <Feather name='search' size={SIZES.xLarge} color={COLORS.white} />
             </TouchableOpacity>
           </View>
-          
+      </View>
+      
+
+   {/* search result components */}
+
+        <View style={styles.searchResultContainer}>
+          {searchResult.length === 0 ? (
+                <View style={{flex: 1}}>
+                  <Image
+                    source={}
+                    style={styles.searchImage}
+                  />
+                </View>
+              
+              ):(
+                <View>
+                  <FlatList
+                    data={searchResult}
+                    renderItem={({item})=> <Text>{item.title}</Text>}
+                  />
+                </View>
+              )}
       </View>
       
     </SafeAreaView>
@@ -44,3 +81,10 @@ const Search = () => {
 }
 
 export default Search
+
+
+// THE TOW WILL WORK FOR INPUT
+// onChangeText={(text)=>setSearchKey(text)} 
+// or 
+// onChangeText={setSearchKey} 
+

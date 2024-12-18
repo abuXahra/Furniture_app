@@ -43,7 +43,9 @@ const Home = () => {
 
             {/* Newly Arrival Items */}
             <ProductRow/>
-
+            
+            {/* empty space */}
+            <View style={styles.verticalSpacing}/>
           </ScrollView>
     </SafeAreaView>
   )

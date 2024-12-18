@@ -3,17 +3,17 @@ import { COLORS, SIZES } from "../../../constant";
 
 const styles = StyleSheet.create({
   container: {
-    width: 182,
+    width: 170,
     height: 240,
-    marginEnd: 10,
+    marginEnd: 5,
     borderRadius: SIZES.medium,
     backgroundColor: COLORS.secondary,
-    marginBottom: 100, //no margin here
+    // marginBottom: 100, //no margin here
   },
 
   imageContainer: {
     flex: 1,
-    width: 170,
+    width: "92%",
     marginLeft: SIZES.small / 2,
     marginTop: SIZES.small / 2,
     borderRadius: SIZES.small,

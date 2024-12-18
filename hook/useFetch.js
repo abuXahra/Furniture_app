@@ -11,8 +11,6 @@ const useFetch = () => {
     setIsLoading(true);
     try {
       const response = await axios.get(`${apiUrl}/products`);
-      console.log(response.data);
-      console.log("API_BASE_URL:", apiUrl);
       setData(response.data);
       setIsLoading(false);
     } catch (error) {

@@ -47,6 +47,10 @@ const styles = StyleSheet.create({
     color: COLORS.lightWhite,
     fontSize: 10,
   },
+
+  verticalSpacing: {
+    height: 100,
+  },
 });
 
 export default styles;

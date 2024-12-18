@@ -4,11 +4,20 @@ import styles from './productCardView.style'
 import { Ionicons } from '@expo/vector-icons'
 import { COLORS } from '../../../constant'
 import { useNavigation } from '@react-navigation/native'
+import Toast from 'react-native-toast-message';
 
 
 const ProductCardView = ({item}) => {
-  const addClickFun =() =>{
-    alert('added to cart')
+  const addClickFun = () =>{
+  
+    
+    Toast.show({
+      type: 'success',  // Type of the toast (success, error, info, etc.)
+      position: 'bottom', // Position of the toast (top, bottom, center)
+      text1: `${item.title} added to cart`, // The main message
+      text2: 'You can proceed to checkout.', // Optional secondary message
+      visibilityTime: 3000, // Duration for the toast visibility (3 seconds)
+    });
   }
 
   const navigation = useNavigation();
@@ -30,9 +39,9 @@ const ProductCardView = ({item}) => {
             </View>
 
             <TouchableOpacity 
-            onPress={()=>{}}
-            style={styles.addBtn}>
-                <Ionicons
+              onPress={addClickFun}
+              style={styles.addBtn}>
+                  <Ionicons
                   name='add-circle'
                   size={35}
                   color={COLORS.primary}

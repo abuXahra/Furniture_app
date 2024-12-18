@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
   },
   listStyle: {
-    columnGap: SIZES.medium,
+    columnGap: SIZES.xLarge,
   },
 });
 

@@ -45,6 +45,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
+  searchResultContainer: {
+    width: "100%",
+    marginHorizontal: 22,
+  },
+
+  searchImage:{
+    resizeMode: "contain",
+    width: SIZES.width -100;
+  }
 });
 
 export default styles;

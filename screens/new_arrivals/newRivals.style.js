@@ -10,23 +10,25 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     backgroundColor: COLORS.lightWhite,
+    gap: 20,
   },
   upperRow: {
     marginHorizontal: 20,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    position: "absolute",
+    position: "relative",
     backgroundColor: COLORS.primary,
     borderRadius: SIZES.large,
     top: SIZES.large,
-    zIndex: 9999,
-    width: SIZES.width - 50,
+    // zIndex: 9999,
+    // width: SIZES.width - 50,
   },
-  textStyle: {
-    fontFamily: "bold",
-    fontSize: 40,
-    color: COLORS.primary,
+  heading: {
+    fontFamily: "semibold",
+    fontSize: SIZES.medium,
+    color: COLORS.lightWhite,
+    marginLeft: 5,
   },
 });
 
